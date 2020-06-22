@@ -147,21 +147,25 @@ Hint: You can use .splice() for this
 */
 
 function removeFlavorByName(flavorArray, flavorName){
-    let itemToDelete = flavorArray.findIndex(flavor => flavor === flavorName);
+   // let itemToDelete = flavorArray.findIndex(flavor => flavor === flavorName);
 
-    // for (i= 0; i < flavorArray.length; i++)
-    //     if (flavorArray(i) === "flavorName") {
-    //         itemToDelete = i;
-    //     } 
-    flavorArray.splice (itemToDelete);
-    
+    for (i= 0; i < flavorArray.length; i++)
+        if (flavorArray[i] === flavorName) {
+            itemToDelete = i;
+            flavorArray.splice (itemToDelete, 1);
+            
+        } 
+        
     return flavorArray;
 }
 
 console.log ("-----------");
-console.log ("Task 5 shows the array with vanilla removed")
+console.log ("Task 5 shows the current array with vanilla removed")
 
 console.log(removeFlavorByName (originalFlavors, 'Vanilla'));
+
+console.log ("And here's the original 31 minus vanilla");
+console.log(removeFlavorByName (duplicateFlavors, 'Vanilla'));
 
 
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. Write a function called copy that makes a copy of the array. 
