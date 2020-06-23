@@ -39,11 +39,10 @@ var originalFlavors = ["Banana Nut Fudge",
         };
         return duplicate;
     }
-    
-    console.log ("Task 6 showing an array being copied");
-    console.log ("The current originalFlavors depending on which of above has been run");
+    console.log ("****** OUTPUT RESET ******")
+    console.log ("Task 6 pushed to the top, showing an array being copied, so we can use it later");
     console.log (originalFlavors);
-    console.log ("And the duplicate")
+    console.log ("The duplicate of originalFlavors which we call duplicateFlavors so we use it later on")
     let duplicateFlavors = [];
     console.log (copy (originalFlavors, duplicateFlavors));
 
@@ -64,7 +63,8 @@ function is31Flavors(flavorArray){
     } return false;
 }
 
-console.log(is31Flavors(originalFlavors) );
+console.log("Task 1: Is the array 31 flavors? " + is31Flavors(originalFlavors) );
+console.log ("And just to be sure, here they are " + originalFlavors);
 
 
 /* Task 2: Corporate has come to you with an idea for a new flavor: Rainbow Sherbert! They think this will be a game changer. You need to modify the array to include this flavor. 
@@ -249,11 +249,14 @@ and should return the average number of words per item in the array.
 
 For example, getAverageWordLength(originalFlavors) should return a number between 0 and 3. */
 
-function getAverageWordLength(/*code here*/){
+// function getAverageWordLength(arrayToWordCount){
+//     for (i= 0; i < flavorArray.length; i++) {
+        
+        
+//         } 
+        
 
-    /*code here*/
-
-}
+// }
 
 
 /* STRETCH 2: Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors.
@@ -337,8 +340,25 @@ var regionalFlavors = ["Pink Bubblegum",
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"]
 
-function getRandomFlavors(/*code here*/){
-
-    /*code here*/
+function getRandomFlavors(newArray, seasonalArray, regionalArray, originalArray){
+    let menu = [];
+    let allFlavors = [... newArray, ... seasonalArray, ... regionalArray, ... originalArray];
+    // console.log ("Here's all the flavors", allFlavors);
+    
+    for (i = 1; i < 32; i++) {
+        let randomTop = (allFlavors.length - 1);
+        let flavorIndex = Math.floor(Math.random() * Math.floor(randomTop));
+        // console.log (randomTop, flavorIndex);
+        let flavorToTake = allFlavors.splice (flavorIndex, 1);
+        // console.log (flavorToTake);        
+        menu.push (flavorToTake);
+        // console.log (menu);
+        
+    }
+    return menu;
+    
 
 }
+
+console.log ("Here's the random flavor menu ", getRandomFlavors (newFlavors, seasonalFlavors, regionalFlavors, duplicateFlavors));
+console.log ("Here's the random flavor menu ", getRandomFlavors (newFlavors, seasonalFlavors, regionalFlavors, duplicateFlavors));
